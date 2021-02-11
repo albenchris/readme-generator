@@ -17,7 +17,48 @@ const questions = [
                 return false;
             }
         }
+    },
+    {
+        type: 'input',
+        name: 'description',
+        message: 'Provide a description of your project (Required)',
+        validate: descriptionInput => {
+            if (descriptionInput) {
+                return true;
+            } else {
+                console.log('Please enter a description!');
+                return false;
+            }
+        }
     }
+    // {
+    //     type: 'input',
+    //     name: 'table-of-contents'
+    // },
+    // {
+    //     type: 'input',
+    //     name: 'installation'
+    // },
+    // {
+    //     type: 'input',
+    //     name: 'usage'
+    // },
+    // {
+    //     type: 'input',
+    //     name: 'license'
+    // },
+    // {
+    //     type: 'input',
+    //     name: 'contributing'
+    // },
+    // {
+    //     type: 'input',
+    //     name: 'tests'
+    // },
+    // {
+    //     type: 'input',
+    //     name: 'questions-contact'
+    // }
 ];
 
 // TODO: Create a function to write README file
@@ -38,4 +79,7 @@ init(questions)
             if (err) throw new Error(err);
             console.log(pageMD);
         })
+    })
+    .catch(err => {
+        console.log(err);
     });
