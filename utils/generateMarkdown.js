@@ -11,17 +11,28 @@ function renderLicenseLink(license) {}
 function renderLicenseSection(license) {}
 
 // TODO: Create a function to generate markdown for README
+
 function generateTableOfContents(tableOfContents) {
   if (!tableOfContents) {
     return '';
   }
 
   return `## Table of Contents
-${tableOfContents.forEach(item => {
-  console.log(item);
-  return `* [${item}](#${item})`;
+${tableOfContents.map(item => {
+  return `* [${item}](#${item.toLowerCase()})
+`
 }
-)}
+).join('')}
+`;
+};
+
+function generateInstructions(installation) {
+  if (!installation) {
+    return '';
+  }
+
+  return `## Installation
+${installation}
 `;
 };
 
@@ -32,6 +43,10 @@ function generateMarkdown(data) {
 ${data.description}
 
 ${generateTableOfContents(data.tableOfContents)}
+
+${generateInstructions(data.installation)}
+
+
 `;
 };
 

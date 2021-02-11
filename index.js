@@ -49,11 +49,25 @@ const questions = [
                 return false;
             }
         }
+    },
+    {
+        type: 'confirm',
+        name: 'installConfirm',
+        message: 'Does your project require installation?',
+        default: false
+    },
+    {
+        type: 'input',
+        name: 'installation',
+        message: 'Provide instructions for how to install your project: ',
+        when: ({ installConfirm }) => {
+            if (installConfirm) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
-    // {
-    //     type: 'input',
-    //     name: 'installation'
-    // },
     // {
     //     type: 'input',
     //     name: 'usage'
