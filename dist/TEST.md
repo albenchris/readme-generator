@@ -1,2 +1,2 @@
-# README Generator
+# Test Project
 
