@@ -30,11 +30,26 @@ const questions = [
                 return false;
             }
         }
+    },
+    {
+        type: 'confirm',
+        name: 'tableConfirm',
+        message: 'Would you like to add a Table of Contents to your README?',
+        default: false
+    },
+    {
+        type: 'checkbox',
+        name: 'tableOfContents',
+        message: 'What sections would you like in the Table of Contents? (Check all that apply)',
+        choices: ['Installation', 'Usage', 'License', 'Contributing', 'Tests', 'Questions'],
+        when: ({ tableConfirm }) => {
+            if (tableConfirm) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
-    // {
-    //     type: 'input',
-    //     name: 'table-of-contents'
-    // },
     // {
     //     type: 'input',
     //     name: 'installation'
@@ -44,7 +59,7 @@ const questions = [
     //     name: 'usage'
     // },
     // {
-    //     type: 'input',
+    //     type: 'list',
     //     name: 'license'
     // },
     // {
@@ -66,6 +81,10 @@ function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
 function init(questions) {
+    if (!questions.tableOfContents) {
+        questions.tableOfContents = [];
+    }
+
     return inquirer.prompt(questions);
 };
 
@@ -77,7 +96,6 @@ init(questions)
     .then(pageMD => {
         return fs.writeFile('./dist/TEST.md', pageMD, err => {
             if (err) throw new Error(err);
-            console.log(pageMD);
         })
     })
     .catch(err => {
