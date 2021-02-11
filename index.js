@@ -23,5 +23,11 @@ function init(questions) {
 // Function call to initialize app
 init(questions)
     .then(answers => {
-        console.log(answers);
+        return generateMarkdown(answers);
     })
+    .then(pageMD => {
+        return fs.writeFile('./dist/TEST.md', pageMD, err => {
+            if (err) throw new Error(err);
+            console.log(pageMD);
+        })
+    });
