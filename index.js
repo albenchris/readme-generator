@@ -50,28 +50,29 @@ const questions = [
             }
         }
     },
-    {
-        type: 'confirm',
-        name: 'installConfirm',
-        message: 'Does your project require installation?',
-        default: false
-    },
+    // {
+    //     type: 'confirm',
+    //     name: 'installConfirm',
+    //     message: 'Does your project require installation?',
+    //     default: false
+    // },
     {
         type: 'input',
         name: 'installation',
         message: 'Provide instructions for how to install your project: ',
-        when: ({ installConfirm }) => {
-            if (installConfirm) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    }
-    // {
-    //     type: 'input',
-    //     name: 'usage'
-    // },
+        // when: ({ installConfirm }) => {
+        //     if (installConfirm) {
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+        // }
+    },
+    {
+        type: 'input',
+        name: 'usage',
+        message: 'Provide instructions and examples for how to use your project: '
+    },
     // {
     //     type: 'list',
     //     name: 'license'

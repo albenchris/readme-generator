@@ -21,19 +21,31 @@ function generateTableOfContents(tableOfContents) {
 ${tableOfContents.map(item => {
   return `* [${item}](#${item.toLowerCase()})
 `
-}
-).join('')}
+}).join('')}
 `;
 };
 
-function generateInstructions(installation) {
+function generateInstallation(installation) {
   if (!installation) {
     return '';
   }
 
   return `## Installation
+
 ${installation}
 `;
+};
+
+function generateUsage(usage) {
+  if (!usage) {
+    return '';
+  }
+
+  return `## Usage
+
+${usage}
+
+`
 };
 
 function generateMarkdown(data) {
@@ -43,10 +55,8 @@ function generateMarkdown(data) {
 ${data.description}
 
 ${generateTableOfContents(data.tableOfContents)}
-
-${generateInstructions(data.installation)}
-
-
+${generateInstallation(data.installation)}
+${generateUsage(data.usage)}
 `;
 };
 
