@@ -1,33 +1,21 @@
+// Packages for application
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown.js');
 
+// Questions start
 const questions = [
     {
         type: 'input',
         name: 'title',
         message: 'What is the title of your project? (Required)',
-        validate: titleInput => {
-            if (titleInput) {
-                return true;
-            } else {
-                console.log('Please enter the title of your project!')
-                return false;
-            }
-        }
+        validate: titleInput => ( titleInput ? true : console.log('Please enter the title of your project!'))
     },
     {
         type: 'input',
         name: 'description',
         message: 'Provide a description of your project (Required)',
-        validate: descriptionInput => {
-            if (descriptionInput) {
-                return true;
-            } else {
-                console.log('Please enter a description!');
-                return false;
-            }
-        }
+        validate: descriptionInput => ( descriptionInput ? true : console.log('Please enter the title of your project!'))
     },
     {
         type: 'confirm',
@@ -81,24 +69,25 @@ const questions = [
         when: ({ contactConfirm }) => ( contactConfirm ? true : false )
     },
     {
-        type: 'confirm',
-        name: 'emailConfirm',
-        message: 'Would you like to provide an email as a form of contact?',
-        default: false,
-        when: ({ contactConfirm }) => ( contactConfirm ? true : false )
-    },
-    {
         type: 'input',
         name: 'email',
         message: 'Provide your email address: ',
-        when: ({ emailConfirm }) => ( emailConfirm ? true : false )
+        when: ({ contactConfirm }) => ( contactConfirm ? true : false )
     }
 ];
+// Questions end
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+// Function to write Markdown file
+function writeToFile(fileName, data) {
+    return fs.writeFile(fileName, data, err => {
+        if (err) {
+            throw new Error(err);
+        } else {
+            console.log('README completed!');
+        }
+    });
+};
 
-// TODO: Create a function to initialize app
 function init(questions) {
     if (!questions.tableOfContents) {
         questions.tableOfContents = [];
@@ -109,14 +98,6 @@ function init(questions) {
 
 // Function call to initialize app
 init(questions)
-    .then(answers => {
-        return generateMarkdown(answers);
-    })
-    .then(pageMD => {
-        return fs.writeFile('./dist/TEST.md', pageMD, err => {
-            if (err) throw new Error(err);
-        })
-    })
-    .catch(err => {
-        console.log(err);
-    });
+    .then(answers => generateMarkdown(answers))
+    .then(data => writeToFile('../README.md', data))
+    .catch(err => console.log(err));

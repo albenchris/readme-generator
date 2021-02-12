@@ -1,40 +1,34 @@
+// Table of Contents function
 function renderTableOfContents(tableOfContents) {
-  if (!tableOfContents) {
-    return '';
-  }
+  if (!tableOfContents) return '';
 
   return `## Table of Contents
 ${tableOfContents.map(item => {
   return `* [${item}](#${item.toLowerCase()})
-`
-}).join('')}
+`})
+.join('')}
 `;
 };
 
+// Instruction functions start
 function renderInstallation(installation) {
-  if (!installation) {
-    return '';
-  }
+  if (!installation) return '';
 
   return `## Installation
-
 ${installation}
 `;
 };
 
 function renderUsage(usage) {
-  if (!usage) {
-    return '';
-  }
+  if (!usage) return '';
 
   return `## Usage
-
 ${usage}
 `;
 };
+// Instruction functions end
 
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+// Licensce functions start
 function renderLicenseBadge(license) {
   switch (license) {
     case 'MIT': return '![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)'
@@ -44,52 +38,43 @@ function renderLicenseBadge(license) {
   }
 };
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
 function renderLicenseLink(license) {
   switch (license) {
     case 'MIT': return 'https://opensource.org/licenses/MIT';
     case 'ISC': return 'https://opensource.org/licenses/ISC';
     case 'GPL-v3': return 'https://www.gnu.org/licenses/gpl-3.0';
     case 'Apache-v2': return 'https://opensource.org/licenses/Apache-2.0';
-
   }
 };
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
 function renderLicenseSection(license) {
-  if (license == 'none') {
-    return '';
-  }
+  if (license == 'none') return '';
 
   return `## License
 ${license}: ${renderLicenseLink(license)}
 `;
 };
+// License functions end
 
+// Contributing functions start
 function renderContributing(contributing) {
-  if (!contributing) {
-    return '';
-  }
+  if (!contributing) return '';
 
-  return `## Contributing
-  
+  return `## Contributing  
 ${contributing}
 `;
 };
 
 function renderTests(tests) {
-  if (!tests) {
-    return '';
-  }
+  if (!tests) return '';
 
   return `## Tests
-  
 ${tests}
 `;
 };
+// Contributing functions end
 
+// Questions/Contact functions start
 const renderGithub = username => !username ? '' : `* GitHub: [${username}](https://github.com/${username.toLowerCase()})`;
 const renderEmail = emailAddress => !emailAddress ? '' : `* Email: ${emailAddress}`;
 
@@ -102,10 +87,11 @@ function renderContact(contactConfirm, github, email) {
 If you have questions, feel free to contact me here:
 ${renderGithub(github)}
 ${renderEmail(email)}
-`
+`;
 };
+// Questions/Contact functions end
 
-// TODO: Create a function to generate markdown for README
+// main function to generate README file
 function generateMarkdown(data) {
   return `# ${data.title} ${renderLicenseBadge(data.license)}
 
