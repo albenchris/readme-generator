@@ -42,31 +42,12 @@ const questions = [
         name: 'tableOfContents',
         message: 'What sections would you like in the Table of Contents? (Check all that apply)',
         choices: ['Installation', 'Usage', 'License', 'Contributing', 'Tests', 'Questions'],
-        when: ({ tableConfirm }) => {
-            if (tableConfirm) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+        when: ({ tableConfirm }) => ( tableConfirm ? true : false )
     },
-    // {
-    //     type: 'confirm',
-    //     name: 'installConfirm',
-    //     message: 'Does your project require installation?',
-    //     default: false
-    // },
     {
         type: 'input',
         name: 'installation',
         message: 'Provide instructions for how to install your project: ',
-        // when: ({ installConfirm }) => {
-        //     if (installConfirm) {
-        //         return true;
-        //     } else {
-        //         return false;
-        //     }
-        // }
     },
     {
         type: 'input',
@@ -87,10 +68,31 @@ const questions = [
         name: 'tests',
         message: 'How would people test your project?'
     },
-    // {
-    //     type: 'input',
-    //     name: 'questions-contact'
-    // }
+    {
+        type: 'confirm',
+        name: 'contactConfirm',
+        message: 'Can others reach out to you in case of questions?',
+        default: false
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: 'What is your GitHub username?',
+        when: ({ contactConfirm }) => ( contactConfirm ? true : false )
+    },
+    {
+        type: 'confirm',
+        name: 'emailConfirm',
+        message: 'Would you like to provide an email as a form of contact?',
+        default: false,
+        when: ({ contactConfirm }) => ( contactConfirm ? true : false )
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'Provide your email address: ',
+        when: ({ emailConfirm }) => ( emailConfirm ? true : false )
+    }
 ];
 
 // TODO: Create a function to write README file

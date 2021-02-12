@@ -67,6 +67,21 @@ ${tests}
 `;
 };
 
+const renderGithub = username => !username ? '' : `* GitHub: [${username}](https://github.com/${username.toLowerCase()})`;
+const renderEmail = emailAddress => !emailAddress ? '' : `* Email: ${emailAddress}`;
+
+function renderContact(contactConfirm, github, email) {
+  if (!contactConfirm) {
+    return '';
+  }
+
+  return `## Questions
+If you have questions, feel free to contact me here:
+${renderGithub(github)}
+${renderEmail(email)}
+`
+};
+
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
@@ -80,6 +95,7 @@ ${renderUsage(data.usage)}
 
 ${renderContributing(data.contributing)}
 ${renderTests(data.tests)}
+${renderContact(data.contactConfirm, data.github, data.email)}
 `;
 };
 
