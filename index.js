@@ -77,14 +77,16 @@ const questions = [
     //     type: 'list',
     //     name: 'license'
     // },
-    // {
-    //     type: 'input',
-    //     name: 'contributing'
-    // },
-    // {
-    //     type: 'input',
-    //     name: 'tests'
-    // },
+    {
+        type: 'input',
+        name: 'contributing',
+        message: 'If you would like other developers to contribute to your project, provide guidelines for that process: '
+    },
+    {
+        type: 'input',
+        name: 'tests',
+        message: 'How would people test your project?'
+    },
     // {
     //     type: 'input',
     //     name: 'questions-contact'

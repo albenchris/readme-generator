@@ -1,18 +1,32 @@
-# Zombie Test
+# TEST
 
 ## Description
-brains...
+This is a test
 
 ## Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
-
+* [Contributing](#contributing)
+* [Tests](#tests)
 
 
 ## Installation
-brains...
 
+type node index into the command line
 
 ## Usage
-brains...
+
+answer the command line prompts and generateMarkdown.js will take care of the rest
+
+
+
+## Contributing
+  
+reach out to me and we'll talk
+
+
+## Tests
+  
+...
+
 
