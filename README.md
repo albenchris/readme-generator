@@ -11,10 +11,20 @@ An application used to quickly write a README file. Meant to help developers sav
 
 
 ## Installation
-Navigate to root of your project, then type 'git clone https://github.com/albenchris/readme-generator.git' into command line.
+* Download ZIP file and extract files into your project.
+* Open terminal and navigate to readme-generator-main. ('cd readme-generator-main') 
+* Type 'npm install inquirer' in command line.
+* [Requires Node.js](https://nodejs.org/en/)
+
+See video:
+[installation](https://drive.google.com/file/d/1OtCXvpLP1ArIfznQT6QKVLwoyh1iin7v/view)
 
 ## Usage
-Navigate to the root of readme-generator in command line (ex. 'cd readme-generator'), then type 'node index.js' into command line and answer prompts.
+* Navigate to the root of readme-generator in command line. (ex. 'cd readme-generator-main')
+* Type 'node index.js' into command line and answer prompts.
+
+See video:
+[usage](https://drive.google.com/file/d/10p18rTL6BSke8uY-UOEXfkOZ3M1f0rkq/view)
 
 ## License
 MIT: https://opensource.org/licenses/MIT
